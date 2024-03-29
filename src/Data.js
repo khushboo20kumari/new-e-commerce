@@ -14,17 +14,17 @@
 
 import { useEffect, useState } from "react";
 
-  
+
 //     return (
 //         <>
 //             {data.map((item) => (
 //                 <>
 //                     <p>{item.title}</p>
-                    
+
 //                     <button>add to card</button>
 //                 </>
 //             ))}
-            
+
 
 
 //         </>
@@ -86,40 +86,43 @@ import { useEffect, useState } from "react";
 // export default EcommerceApp;
 
 
+import CartItem from "./CartItem";
+import CartPrice from "./CartPrice";
+function Data() {
 
-function Data(){
+    const [data, setData] = useState([])
+    const [cart, setCart] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0)
 
-    const [data,setData]=useState([])
-    const [cart,setCart]=useState([])
-    const [totalPrice,setTotalPrice]=useState(0)
-
-    const fetchData=()=>{
-        fetch("https://fakestoreapi.com/products").then((res)=>{
+    const fetchData = () => {
+        fetch("https://fakestoreapi.com/products").then((res) => {
             return res.json()
-        }).then((res)=>{
+        }).then((res) => {
             setData(res)
         })
     }
-    useEffect(()=>{
+    useEffect(() => {
         fetchData()
-    },[])
+    }, [])
 
 
-    const addToCart=(item)=>{
-        setCart([...cart,item])
-        setTotalPrice(totalPrice+item.price)
+    const addToCart = (item) => {
+        setCart([...cart, item])
+        setTotalPrice(totalPrice + item.price)
 
     }
-    return(
+    return (
         <>
-        {data.map((item)=>(
-            <>
-              <p>{item.title}</p>
-              <button onClick={()=>addToCart(item)}>add to cart</button>
-            </>
-        ))}
-        
-          
+            {data.map((item) => (
+                <>
+                    <p>{item.title}</p>
+                    <button onClick={() => addToCart(item)}>add to cart</button>
+                </>
+            ))}
+            <CartItem cart={cart}/>
+            {/* <p>price{totalPrice}</p> */}
+            <CartPrice totalPrice={totalPrice}></CartPrice>
+
         </>
     )
 }
