@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+
+.my-element {
+
+  background-image: url('https://example.com/path/to/image.jpg');
+  /* Other styles */
+}
+
+.image-hover {
+
+  width: '100%'; /* Set width for the image */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.3s ease; /* Add smooth transition effect */
+}
+
+/* Hover state styles */
+.image-hover:hover {
+  transform: scale(1.1); /* Increase size of the image on hover */
+}
+
+.product-img{
+  width: '100%'; /* Set width for the image */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.3s ease; 
+
+}
+.product-img:hover{
+  transform: scale(1.1);
+}
